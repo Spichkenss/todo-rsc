@@ -1,13 +1,52 @@
 {
+  "root": true,
+  "plugins": [
+    "@typescript-eslint",
+    "simple-import-sort"
+  ],
   "extends": [
     "next/core-web-vitals",
     "airbnb",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended"
   ],
+  "parser": "@typescript-eslint/parser",
   "rules": {
-    "import/prefer-default-export": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "quotes": ["error", "double"],
+    "arrow-body-style": ["error", "as-needed"],
+    "react/self-closing-comp": ["error", { "component": true, "html": true }],
+     "@typescript-eslint/consistent-type-imports": [
+       "error",
+       {
+         "fixStyle": "inline-type-imports"
+       }
+     ],
+    "comma-dangle": ["warn", "never"],
+    // Import settings
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": "off",
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          [ "^react", "^@?\\w" ],
+          [ "^@/app/(.*)$" ],
+          [ "^@/pages/(.*)$" ],
+          [ "^@/widgets/(.*)$" ],
+          [ "^@/features/(.*)$" ],
+          [ "^@/entities/(.*)$" ],
+          [ "^@/shared/(.*)$" ],
+          [ "^\\u0000" ],
+          [ "^\\.\\.(?!/?$)", "^\\.\\./?$" ],
+          [ "^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$" ],
+          [ "^.+\\.?(scss)$" ]
+        ]
+      }
+    ]
   },
   "overrides": [
     {
