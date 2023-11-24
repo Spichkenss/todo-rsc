@@ -2,7 +2,7 @@ import { type ReactNode } from "react";
 import { type Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { cn } from "@/shared/utils";
+import { cn } from "@/shared/utils/utils";
 
 import "../config/style/global.css";
 
