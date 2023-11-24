@@ -39,10 +39,5 @@
     "tailwindcss": "^3.3.0",
     "typescript": "^5",
     "husky": "^8.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "next lint --fix"
-    }
   }
 }
