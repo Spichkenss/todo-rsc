@@ -2,7 +2,9 @@ import { type ReactNode } from "react";
 import { type Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { cn } from "@/shared/utils/utils";
+import { Providers } from "@/app/providers";
+
+import { cn } from "@/shared/utils";
 
 import "../config/style/global.css";
 
@@ -20,7 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "min-h-screen bg-background font-sans antialiased")}>{children}</body>
+      <body className={cn(inter.className, "min-h-screen bg-background font-sans antialiased")}>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }

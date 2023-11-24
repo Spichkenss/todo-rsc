@@ -13,6 +13,10 @@
   ],
   "parser": "@typescript-eslint/parser",
   "rules": {
+    "react/function-component-definition": "off",
+    "react/require-default-props": "off",
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": "off",
     "quotes": ["error", "double"],
