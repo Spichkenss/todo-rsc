@@ -1,4 +1,10 @@
 {
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "node": true
+  },
   "root": true,
   "plugins": [
     "@typescript-eslint",
