@@ -1,6 +1,7 @@
 "use client";
 
 import { type PropsWithChildren } from "react";
+import { SessionProvider } from "next-auth/react";
 
 import "../config/style/global.css";
 
@@ -10,8 +11,10 @@ interface ProvidersProps extends PropsWithChildren {}
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <ThemeProvider>
-      {children}
-    </ThemeProvider>
+    <SessionProvider>
+      <ThemeProvider>
+        {children}
+      </ThemeProvider>
+    </SessionProvider>
   );
 }

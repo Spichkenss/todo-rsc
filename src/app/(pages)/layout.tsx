@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={cn(inter.className, "bg-background font-sans antialiased")}>
         <Providers>
           <Navbar />
-          <div className="md:pt-16">
+          <div className="pt-16">
             {children}
           </div>
         </Providers>
