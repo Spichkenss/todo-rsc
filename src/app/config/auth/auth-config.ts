@@ -7,9 +7,6 @@ import { GoogleProvider } from "@/app/config/auth/providers/GoogleProvider";
 import prisma from "@/shared/prisma";
 
 export const NextAuthConfig: NextAuthOptions = {
-  pages: {
-    signIn: "/signin"
-  },
   session: {
     strategy: "jwt"
   },
