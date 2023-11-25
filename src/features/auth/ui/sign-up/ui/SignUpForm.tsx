@@ -1,5 +1,3 @@
-"use client";
-
 import { Pages } from "@/app/config/pages";
 
 import { SignUpControls } from "../../../model/controls";

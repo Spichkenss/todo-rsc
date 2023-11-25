@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+"use client";
 
-import { Pages } from "@/app/config/pages";
+import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 import { Button } from "@/shared/ui/button";
 import {
@@ -27,11 +26,8 @@ interface AuthFormLayoutProps {
 export const AuthFormLayout = ({
   title, description, controls, redirect
 }: AuthFormLayoutProps) => {
-  const { push } = useRouter();
-
   const handleSignIn = async (provider: string) => {
     await signIn(provider, { redirect: false });
-    push(Pages.home);
   };
 
   return (
