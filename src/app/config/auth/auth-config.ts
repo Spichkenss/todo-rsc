@@ -22,9 +22,6 @@ export const NextAuthConfig: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       return { ...token, ...user };
-    },
-    async redirect() {
-      return process.env.NEXTAUTH_URL!;
     }
   }
 };

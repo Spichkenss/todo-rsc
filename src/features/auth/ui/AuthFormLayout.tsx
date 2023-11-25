@@ -1,5 +1,8 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+
+import { Pages } from "@/app/config/pages";
 
 import { Button } from "@/shared/ui/button";
 import {
@@ -23,49 +26,58 @@ interface AuthFormLayoutProps {
 
 export const AuthFormLayout = ({
   title, description, controls, redirect
-}: AuthFormLayoutProps) => (
-  <Card className="min-w-full md:min-w-[500px]">
-    <CardHeader className="space-y-1">
-      <CardTitle className="text-2xl">{title}</CardTitle>
-      <CardDescription>
-        {description}
-      </CardDescription>
-    </CardHeader>
-    <CardContent className="grid gap-4">
-      {controls.map(({
-        type, id, placeholder, label
-      }) => (
-        <div className="grid gap-2">
-          <Label htmlFor={id}>{label}</Label>
-          <Input id={id} type={type} placeholder={placeholder} />
+}: AuthFormLayoutProps) => {
+  const { push } = useRouter();
+
+  const handleSignIn = async (provider: string) => {
+    await signIn(provider, { redirect: false });
+    push(Pages.home);
+  };
+
+  return (
+    <Card className="min-w-full md:min-w-[500px]">
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-2xl">{title}</CardTitle>
+        <CardDescription>
+          {description}
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="grid gap-4">
+        {controls.map(({
+          type, id, placeholder, label
+        }) => (
+          <div className="grid gap-2" key={id}>
+            <Label htmlFor={id}>{label}</Label>
+            <Input id={id} type={type} placeholder={placeholder} />
+          </div>
+        ))}
+        <Button className="w-full">{title}</Button>
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-background px-2 text-muted-foreground">
+              Or continue with
+            </span>
+          </div>
         </div>
-      ))}
-      <Button className="w-full">{title}</Button>
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t" />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+          <Button variant="outline" onClick={() => handleSignIn("github")}>
+            <Icons.gitHub className="mr-2 h-4 w-4" />
+            Github
+          </Button>
+          <Button variant="outline" onClick={() => handleSignIn("google")}>
+            <Icons.google className="mr-2 h-4 w-4" />
+            Google
+          </Button>
         </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background px-2 text-muted-foreground">
-            Or continue with
-          </span>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-        <Button variant="outline" onClick={() => signIn("github", { redirect: true })}>
-          <Icons.gitHub className="mr-2 h-4 w-4" />
-          Github
-        </Button>
-        <Button variant="outline" onClick={() => signIn("google", { redirect: true })}>
-          <Icons.google className="mr-2 h-4 w-4" />
-          Google
-        </Button>
-      </div>
-    </CardContent>
-    <CardFooter>
-      <Link href={redirect.url}>
-        {redirect.title}
-      </Link>
-    </CardFooter>
-  </Card>
-);
+      </CardContent>
+      <CardFooter>
+        <Link href={redirect.url}>
+          {redirect.title}
+        </Link>
+      </CardFooter>
+    </Card>
+  );
+};

@@ -5,8 +5,15 @@ import { signOut } from "next-auth/react";
 import { Button } from "@/shared/ui/button";
 
 export const SignOutButton = () => {
+  const handleClick = async () => {
+    await signOut();
+  };
+
   return (
-    <Button onClick={() => signOut()} variant="default">
+    <Button
+      onClick={handleClick}
+      variant="default"
+    >
       Sign out
     </Button>
   );
