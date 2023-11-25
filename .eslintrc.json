@@ -62,6 +62,12 @@
       "rules": {
         "import/prefer-default-export": "error"
       }
+    },
+    {
+      "files": "src/middlewares/*.ts",
+      "rules": {
+        "consistent-return": "off"
+      }
     }
   ]
 }

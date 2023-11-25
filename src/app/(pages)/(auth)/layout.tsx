@@ -1,11 +1,15 @@
 import { type PropsWithChildren } from "react";
 
+import { onlyWithoutAuth } from "@/features/auth";
+
 interface AuthLayoutProps extends PropsWithChildren {}
 
-export default function AuthLayout({ children }: AuthLayoutProps) {
+const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
     <div className="container flex min-h-screen">
       {children}
     </div>
   );
-}
+};
+
+export default onlyWithoutAuth(AuthLayout);
