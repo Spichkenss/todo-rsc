@@ -6,8 +6,10 @@ interface AuthLayoutProps extends PropsWithChildren {}
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
-    <div className="container flex min-h-screen">
-      {children}
+    <div className="container flex min-h-screen flex-col justify-center md:items-center">
+      <main>
+        {children}
+      </main>
     </div>
   );
 };

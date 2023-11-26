@@ -31,7 +31,7 @@ export const AuthFormLayout = ({
   };
 
   return (
-    <Card className="min-w-full md:min-w-[500px]">
+    <Card className="w-full md:w-[500px]">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">{title}</CardTitle>
         <CardDescription>

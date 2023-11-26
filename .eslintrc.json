@@ -13,6 +13,7 @@
   ],
   "parser": "@typescript-eslint/parser",
   "rules": {
+    "no-param-reassign": "off",
     "react/jsx-pascal-case": "off",
     "jsx-a11y/heading-has-content": "off",
     "react/function-component-definition": "off",

@@ -7,7 +7,7 @@ import { Typography } from "@/shared/ui/typography";
 
 async function Home() {
   return (
-    <main className="flex grow flex-col items-center gap-4 self-center">
+    <main className="flex grow flex-col items-center justify-center gap-4">
       <Typography
         as="h1"
         weight="bold"
