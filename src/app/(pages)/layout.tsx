@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import { type PropsWithChildren } from "react";
 import { type Metadata } from "next";
 
 import { inter } from "@/app/config/style/fonts";
@@ -12,11 +12,9 @@ export const metadata: Metadata = {
   title: "rsc-todo-app"
 };
 
-export default function RootLayout({
-  children
-}: {
-  children: ReactNode
-}) {
+interface RootLayoutProps extends PropsWithChildren {}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={cn(inter.className, "bg-background font-sans antialiased")}>

@@ -11,23 +11,27 @@ const createTodoSchema = z.object({
 });
 
 export const createTodoAction = async (formData: FormData) => {
-  const user = await getCurrentUser();
+  try {
+    const user = await getCurrentUser();
 
-  if (!user) {
-    return null;
-  }
-
-  const data = Object.fromEntries(formData);
-  const newTodoData = createTodoSchema.parse(data);
-
-  const newTodo = await prisma.todo.create({
-    data: {
-      ...newTodoData,
-      userId: user.id
+    if (!user) {
+      return null;
     }
-  });
 
-  revalidatePath("/home");
+    const data = Object.fromEntries(formData);
+    const newTodoData = createTodoSchema.parse(data);
 
-  return new Promise((resolve) => { resolve(newTodo); });
+    const newTodo = await prisma.todo.create({
+      data: {
+        ...newTodoData,
+        userId: user.id
+      }
+    });
+
+    revalidatePath("/home");
+
+    return new Promise((res) => { res(newTodo); });
+  } catch (e) {
+    return new Promise((_, rej) => { rej(e); });
+  }
 };

@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 
-import { Button } from "@/shared/ui/button";
+import { CreateTodoButton } from "@/features/todo/create-todo/ui/CreateTodoButton";
+
 import { Input } from "@/shared/ui/input";
 
 import { createTodoAction } from "../model/actions";
@@ -11,8 +12,8 @@ export const CreateTodoForm = () => {
   const ref = useRef<HTMLFormElement>(null);
 
   const handleCreateTodo = async (formData: FormData) => {
-    ref.current?.reset();
     await createTodoAction(formData);
+    ref?.current?.reset();
   };
 
   return (
@@ -27,8 +28,9 @@ export const CreateTodoForm = () => {
         type="text"
         placeholder="Write a new task..."
         className="h-11 text-xl"
+        required
       />
-      <Button type="submit" size="lg">Create</Button>
+      <CreateTodoButton />
     </form>
   );
 };

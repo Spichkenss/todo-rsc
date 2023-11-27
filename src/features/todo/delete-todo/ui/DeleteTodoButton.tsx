@@ -1,28 +1,22 @@
 "use client";
 
+import { useFormStatus } from "react-dom";
 import { LucideTrash2 } from "lucide-react";
 
-import { useTodoItemContext } from "@/entities/todos/model/TodoItem.context";
-
 import { Button } from "@/shared/ui/button";
-
-import { deleteTodoAction } from "../model/actions";
+import { Loader } from "@/shared/ui/loader";
 
 export const DeleteTodoButton = () => {
-  const { id } = useTodoItemContext();
-
-  const handleDelete = async () => {
-    await deleteTodoAction(id);
-  };
+  const { pending } = useFormStatus();
 
   return (
     <Button
-      variant="ghost"
+      variant="default"
       size="icon"
       type="submit"
-      onClick={handleDelete}
+      disabled={pending}
     >
-      <LucideTrash2 />
+      { pending ? <Loader color="secondary" /> : <LucideTrash2 />}
     </Button>
   );
 };
