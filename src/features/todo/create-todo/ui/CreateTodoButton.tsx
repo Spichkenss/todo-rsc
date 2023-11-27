@@ -8,7 +8,7 @@ export const CreateTodoButton = () => {
 
   return (
     <Button type="submit" size="lg" disabled={pending} className="min-w-[100px]">
-      {pending ? <Loader /> : <span>Create</span>}
+      {pending ? <Loader color="secondary" /> : <span>Create</span>}
     </Button>
   );
 };
